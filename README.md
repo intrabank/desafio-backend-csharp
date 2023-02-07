@@ -33,7 +33,7 @@ Uma _fintech_ precisa sistematizar seu negócio de atencipação de recebíveis,
 - Documentar, via código-fonte, os campos, parâmetros e dados de retorno da API para exibição no Swagger.
 - Dockerizar a aplicação e disponibilizar instruções para deploy em uma nuvem pública.
 
-## Como deverá ser entregues
+## Como deverá ser entregue
 
 1. Faça um fork deste repositório.
 1. Realize o desenvolvimento proposto no desafio.
