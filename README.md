@@ -2,7 +2,9 @@
 
 ## Requisitos Gerais
 
-Uma _fintech_ precisa sistematizar seu negócio de atencipação de recebíveis, onde passará ser necessário ter um controle dos clientes empresarias que possuem crédito concedido. Para isso, foi solicitado a você desenvolver uma aplicação em formato de API REST/JSON para gerenciar estes clientes. Requisitos:
+Uma _fintech_ precisa sistematizar seu negócio de atencipação de recebíveis, onde passará ser necessário ter um controle dos clientes empresarias que possuem crédito concedido. Para isso, foi solicitado a você desenvolver uma aplicação em formato de API REST/JSON para gerenciar estes clientes. 
+
+## Requisitos Funcionais
 
 - O sistema deverá mostrar todos os clientes empresariais cadastrados ordenados de forma ascendente pela razão social.
 - Ao persistir, validar se o cliente já foi cadastrado anteriormente.
@@ -10,7 +12,7 @@ Uma _fintech_ precisa sistematizar seu negócio de atencipação de recebíveis,
 - Os clientes devem ser persistidos em um banco de dados.
 - Criar algum mecanismo de log de registro e de erro.
 
-## Requisitos Técnicos
+## Requisitos Não Funcionais
 
 - Incluir mecanismo de autenticação no Swagger, usando Token JWT (Bearer).
 - Para a persistência dos dados deve ser utilizado o Entity Framework.
@@ -23,7 +25,7 @@ Uma _fintech_ precisa sistematizar seu negócio de atencipação de recebíveis,
 - Atenção aos princípio do SOLID e Clean Architecture.
 - Não é necessária a criação de front-end, o teste será feito pelo Swagger UI.
 
-## Diferenciais do desafio
+## Diferenciais que serão avaliados na resolução do desafio
 
 - Aplicação das boas práticas do DDD, TDD, Design Patterns, SOLID e Clean Code.
 - Intencionalmente a modelagem dos dados não será fornecida, já que desejamos avaliar a sua capacidade de abstração.
