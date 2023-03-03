@@ -14,3 +14,27 @@ build_property.SupportLocalizedComponentNames =
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = D:\ws-c#\APIDesafioIntrabank\APIDesafioIntrabank
 build_property._RazorSourceGeneratorDebug = 
+
+[D:/ws-c\#/APIDesafioIntrabank/APIDesafioIntrabank/Views/ClienteEmpresarials/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZUVtcHJlc2FyaWFsc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ws-c\#/APIDesafioIntrabank/APIDesafioIntrabank/Views/ClienteEmpresarials/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZUVtcHJlc2FyaWFsc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ws-c\#/APIDesafioIntrabank/APIDesafioIntrabank/Views/ClienteEmpresarials/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZUVtcHJlc2FyaWFsc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ws-c\#/APIDesafioIntrabank/APIDesafioIntrabank/Views/ClienteEmpresarials/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZUVtcHJlc2FyaWFsc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ws-c\#/APIDesafioIntrabank/APIDesafioIntrabank/Views/ClienteEmpresarials/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZUVtcHJlc2FyaWFsc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ws-c\#/APIDesafioIntrabank/APIDesafioIntrabank/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
