@@ -40,7 +40,7 @@ namespace desafio_backend.Controllers
             // Verify if customer already exists in database
             var clienteExistente = await _clienteRepositorio.BuscarPorCnpj(clienteModel.Cnpj);
             if (clienteExistente != null)
-            {
+            {   
                 return BadRequest("Erro: Já existe um cliente cadastrado com este CNPJ.");
             }
 
