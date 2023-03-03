@@ -82,6 +82,25 @@ namespace APIDesafioIntrabank.Migrations
                     b.ToTable("tb_endereco");
                 });
 
+            modelBuilder.Entity("APIDesafioIntrabank.Model.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tb_user");
+                });
+
             modelBuilder.Entity("APIDesafioIntrabank.Model.ClienteEmpresarial", b =>
                 {
                     b.HasOne("APIDesafioIntrabank.Model.Endereco", "Endereco")

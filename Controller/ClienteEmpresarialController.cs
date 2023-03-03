@@ -1,6 +1,7 @@
 ﻿using APIDesafioIntrabank.Data;
 using APIDesafioIntrabank.Dto;
 using APIDesafioIntrabank.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +19,7 @@ namespace APIDesafioIntrabank.Controller
         }
 
         [HttpGet]
+        [Authorize]
         public IEnumerable<ClienteEmpresarialDTO> FindAll()
         {
             return _context.ClientesEmpresariais.Select(
@@ -27,6 +29,7 @@ namespace APIDesafioIntrabank.Controller
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public ActionResult<ClienteEmpresarialDTO> FindById(int id)
         {
             var clienteEmpresarial = _context.ClientesEmpresariais.Where(c => c.Id == id)
@@ -39,6 +42,7 @@ namespace APIDesafioIntrabank.Controller
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult<ClienteEmpresarialDTO> Insert([FromBody] ClienteEmpresarialDTO clienteEmpresarialDTO)
         {
             var clienteExists = _context.ClientesEmpresariais.FirstOrDefault(c => c.Cnpj == clienteEmpresarialDTO.Cnpj);
@@ -65,9 +69,10 @@ namespace APIDesafioIntrabank.Controller
         }
 
         [HttpPut("{id}")]
-        public ActionResult Update(int id, [FromBody] ClienteEmpresarialDTO ClienteEmpresarialDTO)
+        [Authorize]
+        public ActionResult Update(int id, [FromBody] ClienteEmpresarialDTO clienteEmpresarialDTO)
         {
-            if (id != ClienteEmpresarialDTO.Id)
+            if (id != clienteEmpresarialDTO.Id)
             {
                 return BadRequest();
             }
@@ -79,13 +84,13 @@ namespace APIDesafioIntrabank.Controller
                 return NotFound("Cliente não existe na base de dados");
             }
 
-            ClienteEmpresarial.RazaoSocial = ClienteEmpresarialDTO.RazaoSocial;
-            ClienteEmpresarial.NomeFantasia = ClienteEmpresarialDTO.NomeFantasia;
-            ClienteEmpresarial.Cnpj = ClienteEmpresarialDTO.Cnpj;
-            ClienteEmpresarial.Telefone = ClienteEmpresarialDTO.Telefone;
-            ClienteEmpresarial.Email = ClienteEmpresarialDTO.Email;
+            ClienteEmpresarial.RazaoSocial = clienteEmpresarialDTO.RazaoSocial;
+            ClienteEmpresarial.NomeFantasia = clienteEmpresarialDTO.NomeFantasia;
+            ClienteEmpresarial.Cnpj = clienteEmpresarialDTO.Cnpj;
+            ClienteEmpresarial.Telefone = clienteEmpresarialDTO.Telefone;
+            ClienteEmpresarial.Email = clienteEmpresarialDTO.Email;
 
-            var Endereco = _context.Enderecos.Find(ClienteEmpresarialDTO.EnderecoId);
+            var Endereco = _context.Enderecos.Find(clienteEmpresarialDTO.EnderecoId);
 
             if (Endereco == null)
             {
@@ -105,6 +110,7 @@ namespace APIDesafioIntrabank.Controller
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public ActionResult Delete(int id)
         {
             var ClienteEmpresarial = _context.ClientesEmpresariais.FirstOrDefault(c => c.Id == id);

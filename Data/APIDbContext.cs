@@ -7,6 +7,7 @@ namespace APIDesafioIntrabank.Data
     {
         public DbSet<ClienteEmpresarial> ClientesEmpresariais { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<User> Users { get; set; }
         public APIDbContext(DbContextOptions options) : base(options)
         {
         }

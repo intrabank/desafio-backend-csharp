@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIDesafioIntrabank.Migrations
 {
     [DbContext(typeof(APIDbContext))]
-    [Migration("20230302205231_Initial")]
-    partial class Initial
+    [Migration("20230303200018_Entities and Login")]
+    partial class EntitiesandLogin
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -82,6 +82,25 @@ namespace APIDesafioIntrabank.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("tb_endereco");
+                });
+
+            modelBuilder.Entity("APIDesafioIntrabank.Model.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tb_user");
                 });
 
             modelBuilder.Entity("APIDesafioIntrabank.Model.ClienteEmpresarial", b =>

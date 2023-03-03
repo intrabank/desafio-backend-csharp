@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace APIDesafioIntrabank.Migrations
 {
-    public partial class Initial : Migration
+    public partial class EntitiesandLogin : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,6 +30,23 @@ namespace APIDesafioIntrabank.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_tb_endereco", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "tb_user",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UserName = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Password = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tb_user", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -74,6 +91,9 @@ namespace APIDesafioIntrabank.Migrations
         {
             migrationBuilder.DropTable(
                 name: "tb_cliente_empresarial");
+
+            migrationBuilder.DropTable(
+                name: "tb_user");
 
             migrationBuilder.DropTable(
                 name: "tb_endereco");
