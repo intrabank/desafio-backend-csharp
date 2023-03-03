@@ -2,6 +2,7 @@
 using APIDesafioIntrabank.Dto;
 using APIDesafioIntrabank.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace APIDesafioIntrabank.Controller
 {
@@ -32,13 +33,13 @@ namespace APIDesafioIntrabank.Controller
                 .Select(c => new ClienteEmpresarialDTO
                 (c.Id, c.RazaoSocial, c.NomeFantasia, c.Cnpj, c.Telefone, c.Email, c.EnderecoId)).FirstOrDefault();
 
-            if (clienteEmpresarial == null) return NotFound("Cliente não encontrado");
+            if (clienteEmpresarial == null) return NotFound("Cliente empresarial não encontrado");
 
             return clienteEmpresarial;
         }
 
         [HttpPost]
-        public ActionResult<ClienteEmpresarialDTO> Insert(ClienteEmpresarialDTO clienteEmpresarialDTO)
+        public ActionResult<ClienteEmpresarialDTO> Insert([FromBody] ClienteEmpresarialDTO clienteEmpresarialDTO)
         {
             var clienteEmpresarial = new ClienteEmpresarial()
             {
@@ -54,6 +55,46 @@ namespace APIDesafioIntrabank.Controller
             _context.SaveChanges();
 
             return CreatedAtAction("FindById", new { id = clienteEmpresarial.Id }, clienteEmpresarial);
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult Update(int id, [FromBody] ClienteEmpresarialDTO ClienteEmpresarialDTO)
+        {
+            if (id != ClienteEmpresarialDTO.Id)
+            {
+                return BadRequest();
+            }
+
+            var ClienteEmpresarial = _context.ClientesEmpresariais.Find(id);
+
+            if (ClienteEmpresarial == null)
+            {
+                return NotFound("Cliente empresarial não existe");
+            }
+
+            ClienteEmpresarial.RazaoSocial = ClienteEmpresarialDTO.RazaoSocial;
+            ClienteEmpresarial.NomeFantasia = ClienteEmpresarialDTO.NomeFantasia;
+            ClienteEmpresarial.Cnpj = ClienteEmpresarialDTO.Cnpj;
+            ClienteEmpresarial.Telefone = ClienteEmpresarialDTO.Telefone;
+            ClienteEmpresarial.Email = ClienteEmpresarialDTO.Email;
+
+            var Endereco = _context.Enderecos.Find(ClienteEmpresarialDTO.EnderecoId);
+
+            if (Endereco == null)
+            {
+                return BadRequest("Endereço inválido");
+            }
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw;
+            }
+
+            return NoContent();
         }
 
     }

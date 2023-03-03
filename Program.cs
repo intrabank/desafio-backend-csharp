@@ -7,8 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionStringMysql = builder.Configuration.GetConnectionString("ConnectionMysql");
 builder.Services.AddDbContext<APIDbContext>(x => x.UseMySql(
         connectionStringMysql,
-        ServerVersion.Parse("8.0.32.0-MariaDB")
-    ));
+        ServerVersion.Parse("8.0.32.0-MariaDB"))  
+    );
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
