@@ -18,6 +18,11 @@ namespace desafio_backend.Repository
             return await _dbContext.Clientes.FirstOrDefaultAsync(x => x.Id == id);
         }
 
+        public async Task<ClienteEmpresarialModel> BuscarPorCnpj(string cnpj)
+        {
+            return await _dbContext.Clientes.FirstOrDefaultAsync(x => x.Cnpj == cnpj);
+        }
+
         public async Task<List<ClienteEmpresarialModel>> BuscarTodosClientes()
         {
             return await _dbContext.Clientes.ToListAsync();

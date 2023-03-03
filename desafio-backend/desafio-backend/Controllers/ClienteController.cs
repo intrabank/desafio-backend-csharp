@@ -21,6 +21,8 @@ namespace desafio_backend.Controllers
         public async Task<ActionResult<List<ClienteEmpresarialModel>>> BuscarTodosClientes()
         {
             List<ClienteEmpresarialModel> clientes = await _clienteRepositorio.BuscarTodosClientes();
+
+            // Order by social reason.
             clientes = clientes.OrderBy(c => c.RazaoSocial).ToList();
             return Ok(clientes);
         }
@@ -35,6 +37,13 @@ namespace desafio_backend.Controllers
         [HttpPost]
         public async Task<ActionResult<ClienteEmpresarialModel>> Cadastrar([FromBody] ClienteEmpresarialModel clienteModel)
         {
+            // Verify if customer already exists in database
+            var clienteExistente = await _clienteRepositorio.BuscarPorCnpj(clienteModel.Cnpj);
+            if (clienteExistente != null)
+            {
+                return BadRequest("Erro: Já existe um cliente cadastrado com este CNPJ.");
+            }
+
             ClienteEmpresarialModel cliente = await _clienteRepositorio.Adicionar(clienteModel);
             return Ok(cliente);
         }
