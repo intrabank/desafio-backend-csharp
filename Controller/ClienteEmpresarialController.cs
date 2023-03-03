@@ -41,6 +41,13 @@ namespace APIDesafioIntrabank.Controller
         [HttpPost]
         public ActionResult<ClienteEmpresarialDTO> Insert([FromBody] ClienteEmpresarialDTO clienteEmpresarialDTO)
         {
+            var clienteExists = _context.ClientesEmpresariais.FirstOrDefault(c => c.Cnpj == clienteEmpresarialDTO.Cnpj);
+
+            if (clienteExists != null)
+            {
+                return BadRequest("Já existe um cliente empresarial cadastrado com esse CNPJ.");
+            }
+
             var clienteEmpresarial = new ClienteEmpresarial()
             {
                 RazaoSocial = clienteEmpresarialDTO.RazaoSocial,
@@ -108,8 +115,6 @@ namespace APIDesafioIntrabank.Controller
             _context.SaveChanges();
 
             return NoContent();
-
         }
-
     }
 }
