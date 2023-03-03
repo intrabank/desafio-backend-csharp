@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using desafio_backend.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace desafio_backend.Controllers
@@ -7,5 +8,10 @@ namespace desafio_backend.Controllers
     [ApiController]
     public class ClienteController : ControllerBase
     {
+        [HttpGet]
+        public ActionResult<List<ClienteEmpresarialModel>> BuscarTodosClientes()
+        {
+            return Ok();
+        }
     }
 }

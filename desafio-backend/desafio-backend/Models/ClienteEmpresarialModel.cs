@@ -2,7 +2,7 @@
 
 namespace desafio_backend.Models
 {
-    public class ClienteEmpresarial
+    public class ClienteEmpresarialModel
     {
         public int Id { get; set; }
         public string Nome { get; set; }
