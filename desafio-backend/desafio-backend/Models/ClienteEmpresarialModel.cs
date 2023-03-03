@@ -4,6 +4,7 @@ namespace desafio_backend.Models
 {
     public class ClienteEmpresarialModel
     {
+        [Key]
         public int Id { get; set; }
         public string Nome { get; set; }
         public string RazaoSocial { get; set; }

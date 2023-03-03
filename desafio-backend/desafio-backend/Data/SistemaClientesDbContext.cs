@@ -1,4 +1,5 @@
-﻿using desafio_backend.Models;
+﻿using desafio_backend.Data.Map;
+using desafio_backend.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace desafio_backend.Data
@@ -14,6 +15,7 @@ namespace desafio_backend.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new ClienteMap());
             base.OnModelCreating(modelBuilder);
         }
     }

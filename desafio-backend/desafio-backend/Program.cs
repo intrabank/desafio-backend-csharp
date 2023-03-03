@@ -10,11 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<SistemaClientesDbContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DataBase"));
+});
 
-builder.Services.AddEntityFrameworkSqlServer()
-        .AddDbContext<SistemaClientesDbContext>(
-            options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
-        );
+
 
 builder.Services.AddScoped<ICliente, ClienteRepositorio>();
 
