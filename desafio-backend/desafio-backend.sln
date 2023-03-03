@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33417.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "desafio-backend", "desafio-backend\desafio-backend.csproj", "{32C27723-E8AB-47DD-92AF-262F740936FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BD6B7D23-2046-4C11-8C90-364D3230B343}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32C27723-E8AB-47DD-92AF-262F740936FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32C27723-E8AB-47DD-92AF-262F740936FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32C27723-E8AB-47DD-92AF-262F740936FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32C27723-E8AB-47DD-92AF-262F740936FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B71AE6F6-AB0D-4898-AEA2-1F4A80CC29AC}
+	EndGlobalSection
+EndGlobal
