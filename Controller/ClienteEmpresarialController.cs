@@ -69,7 +69,7 @@ namespace APIDesafioIntrabank.Controller
 
             if (ClienteEmpresarial == null)
             {
-                return NotFound("Cliente empresarial não existe");
+                return NotFound("Cliente não existe na base de dados");
             }
 
             ClienteEmpresarial.RazaoSocial = ClienteEmpresarialDTO.RazaoSocial;
@@ -95,6 +95,20 @@ namespace APIDesafioIntrabank.Controller
             }
 
             return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            var ClienteEmpresarial = _context.ClientesEmpresariais.FirstOrDefault(c => c.Id == id);
+
+            if (ClienteEmpresarial == null) return NotFound("Cliente não existe na base de dados");
+
+            _context.ClientesEmpresariais.Remove(ClienteEmpresarial);
+            _context.SaveChanges();
+
+            return NoContent();
+
         }
 
     }
