@@ -1,3 +1,8 @@
+using desafio_backend.Data;
+using desafio_backend.Repository;
+using desafio_backend.Repository.Interface;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +10,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddEntityFrameworkSqlServer()
+        .AddDbContext<SistemaClientesDbContext>(
+            options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
+        );
+
+builder.Services.AddScoped<ICliente, ClienteRepositorio>();
 
 var app = builder.Build();
 
