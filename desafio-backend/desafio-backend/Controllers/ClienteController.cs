@@ -21,6 +21,7 @@ namespace desafio_backend.Controllers
         public async Task<ActionResult<List<ClienteEmpresarialModel>>> BuscarTodosClientes()
         {
             List<ClienteEmpresarialModel> clientes = await _clienteRepositorio.BuscarTodosClientes();
+            clientes = clientes.OrderBy(c => c.RazaoSocial).ToList();
             return Ok(clientes);
         }
 
