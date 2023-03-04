@@ -53,6 +53,18 @@ namespace APIDesafioIntrabank.Controller
                 return BadRequest("Já existe um cliente empresarial cadastrado com esse CNPJ.");
             }
 
+            var endereco = _context.Enderecos.FirstOrDefault(e => e.Id == createClienteDTO.EnderecoId);
+
+            if (endereco == null)
+            {
+                return BadRequest("Esse endereço não existe");
+            }
+
+            if (_context.ClientesEmpresariais.Any(c => c.EnderecoId == createClienteDTO.EnderecoId))
+            {
+                return BadRequest("Esse endereço ja está cadastrado a outro cliente");
+            }
+
             _mapper.Map(createClienteDTO, clienteEmpresarial);
 
             _context.ClientesEmpresariais.Add(clienteEmpresarial);
