@@ -23,28 +23,27 @@ namespace APIDesafioIntrabank.Controller
         }
 
         [HttpGet]
-        public IEnumerable<ClienteEmpresarialDTO> FindAll()
+        public IEnumerable<ReadClienteEmpresarialDTO> FindAll()
         {
-            return _context.ClientesEmpresariais.Select(
-                c => new ClienteEmpresarialDTO(
-                    c.Id, c.RazaoSocial, c.NomeFantasia, c.Cnpj, c.Telefone, c.Email, c.EnderecoId)
-                ).ToList();
+            var listaClientes = _context.ClientesEmpresariais.ToList();
+            return _mapper.Map<List<ReadClienteEmpresarialDTO>>(listaClientes);
+            
         }
 
         [HttpGet("{id}")]
-        public ActionResult<ClienteEmpresarialDTO> FindById(int id)
+        public IActionResult FindById(int id)
         {
-            var clienteEmpresarial = _context.ClientesEmpresariais.Where(c => c.Id == id)
-                .Select(c => new ClienteEmpresarialDTO
-                (c.Id, c.RazaoSocial, c.NomeFantasia, c.Cnpj, c.Telefone, c.Email, c.EnderecoId)).FirstOrDefault();
+            var clienteEmpresarial = _context.ClientesEmpresariais.FirstOrDefault(c => c.Id == id);
 
             if (clienteEmpresarial == null) return NotFound("Cliente empresarial não encontrado");
 
-            return Ok(clienteEmpresarial);
+            var clienteDTO = _mapper.Map<ReadClienteEmpresarialDTO>(clienteEmpresarial);
+
+            return Ok(clienteDTO);
         }
 
         [HttpPost]
-        public ActionResult<ClienteEmpresarialDTO> Insert([FromBody] CreateClienteDTO createClienteDTO)
+        public IActionResult Insert([FromBody] CreateClienteDTO createClienteDTO)
         {
             var clienteEmpresarial = _context.ClientesEmpresariais.FirstOrDefault(c => c.Cnpj == createClienteDTO.Cnpj);
 
@@ -74,7 +73,7 @@ namespace APIDesafioIntrabank.Controller
         }
 
         [HttpPut("{id}")]
-        public ActionResult Update(int id, [FromBody] UpdateClienteDTO updateClienteDTO)
+        public IActionResult Update(int id, [FromBody] UpdateClienteDTO updateClienteDTO)
         {
             var clienteEmpresarial = _context.ClientesEmpresariais.FirstOrDefault(c => c.Id == id);
 
@@ -107,7 +106,7 @@ namespace APIDesafioIntrabank.Controller
         }
 
         [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
             var clienteEmpresarial = _context.ClientesEmpresariais.FirstOrDefault(c => c.Id == id);
 

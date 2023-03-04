@@ -10,6 +10,7 @@ namespace APIDesafioIntrabank.Profiles
         {
             CreateMap<CreateClienteDTO, ClienteEmpresarial>();
             CreateMap<UpdateClienteDTO, ClienteEmpresarial>();
+            CreateMap<ClienteEmpresarial, ReadClienteEmpresarialDTO>();
         }
     }
 }
