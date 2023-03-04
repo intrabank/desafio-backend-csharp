@@ -46,14 +46,14 @@ namespace APIDesafioIntrabank.Controller
         [HttpPost]
         public ActionResult<ClienteEmpresarialDTO> Insert([FromBody] CreateClienteDTO createClienteDTO)
         {
-            var clienteExists = _context.ClientesEmpresariais.FirstOrDefault(c => c.Cnpj == createClienteDTO.Cnpj);
+            var clienteEmpresarial = _context.ClientesEmpresariais.FirstOrDefault(c => c.Cnpj == createClienteDTO.Cnpj);
 
-            if (clienteExists != null)
+            if (clienteEmpresarial != null)
             {
                 return BadRequest("Já existe um cliente empresarial cadastrado com esse CNPJ.");
             }
 
-            var clienteEmpresarial = _mapper.Map<ClienteEmpresarial>(createClienteDTO);
+            _mapper.Map(createClienteDTO, clienteEmpresarial);
 
             _context.ClientesEmpresariais.Add(clienteEmpresarial);
             _context.SaveChanges();
@@ -62,41 +62,34 @@ namespace APIDesafioIntrabank.Controller
         }
 
         [HttpPut("{id}")]
-        public ActionResult Update(int id, [FromBody] ClienteEmpresarialDTO clienteEmpresarialDTO)
+        public ActionResult Update(int id, [FromBody] UpdateClienteDTO updateClienteDTO)
         {
-            if (id != clienteEmpresarialDTO.Id)
+            var clienteEmpresarial = _context.ClientesEmpresariais.FirstOrDefault(c => c.Id == id);
+
+            if (clienteEmpresarial == null)
             {
-                return BadRequest();
+                return NotFound("Esse cliente não está cadastrado na base");
             }
 
-            var ClienteEmpresarial = _context.ClientesEmpresariais.Find(id);
-
-            if (ClienteEmpresarial == null)
+            if (_context.ClientesEmpresariais.Any(c => c.Id != clienteEmpresarial.Id &&  c.Cnpj == updateClienteDTO.Cnpj))
             {
-                return NotFound("Cliente não existe na base de dados");
+                return BadRequest("Já existe um cliente cadastrado com o mesmo CNPJ.");
             }
 
-            ClienteEmpresarial.RazaoSocial = clienteEmpresarialDTO.RazaoSocial;
-            ClienteEmpresarial.NomeFantasia = clienteEmpresarialDTO.NomeFantasia;
-            ClienteEmpresarial.Cnpj = clienteEmpresarialDTO.Cnpj;
-            ClienteEmpresarial.Telefone = clienteEmpresarialDTO.Telefone;
-            ClienteEmpresarial.Email = clienteEmpresarialDTO.Email;
+            var endereco = _context.Enderecos.FirstOrDefault(e => e.Id == updateClienteDTO.EnderecoId);
 
-            var Endereco = _context.Enderecos.Find(clienteEmpresarialDTO.EnderecoId);
-
-            if (Endereco == null)
+            if (endereco == null)
             {
-                return BadRequest("Endereço inválido");
+                return BadRequest("Esse endereço não existe");
             }
 
-            try
+            if (_context.ClientesEmpresariais.Any(c => c.Id != clienteEmpresarial.Id && c.EnderecoId == updateClienteDTO.EnderecoId))
             {
-                _context.SaveChanges();
+                return BadRequest("Esse endereço ja está cadastrado a outro cliente");
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                throw;
-            }
+
+            _mapper.Map(updateClienteDTO, clienteEmpresarial);
+            _context.SaveChanges();
 
             return NoContent();
         }
