@@ -8,17 +8,20 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddControllers();
 
 //DB
 var connectionStringMysql = builder.Configuration.GetConnectionString("ConnectionMysql");
 builder.Services.AddDbContext<APIDbContext>(x => x.UseMySql(
         connectionStringMysql,
-        ServerVersion.Parse("8.0.32.0-MariaDB"))  
+        ServerVersion.AutoDetect(connectionStringMysql)) 
     );
 
-builder.Services.AddControllers();
 
+//AUTOMAPPER
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+//AUTH
 var key = Encoding.ASCII.GetBytes(Settings.Secret);
 builder.Services.AddAuthentication(x =>
 {

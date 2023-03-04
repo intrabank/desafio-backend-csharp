@@ -1,4 +1,6 @@
-﻿namespace APIDesafioIntrabank.Dto
+﻿using Newtonsoft.Json;
+
+namespace APIDesafioIntrabank.Dto
 {
     public class ClienteEmpresarialDTO
     {

@@ -1,6 +1,8 @@
 ﻿using APIDesafioIntrabank.Data;
 using APIDesafioIntrabank.Dto;
 using APIDesafioIntrabank.Model;
+using APIDesafioIntrabank.Profiles;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,14 +14,15 @@ namespace APIDesafioIntrabank.Controller
     public class ClienteEmpresarialController : ControllerBase
     {
         private readonly APIDbContext _context;
+        private readonly IMapper _mapper;
 
-        public ClienteEmpresarialController(APIDbContext context)
+        public ClienteEmpresarialController(APIDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        [Authorize]
         public IEnumerable<ClienteEmpresarialDTO> FindAll()
         {
             return _context.ClientesEmpresariais.Select(
@@ -29,7 +32,6 @@ namespace APIDesafioIntrabank.Controller
         }
 
         [HttpGet("{id}")]
-        [Authorize]
         public ActionResult<ClienteEmpresarialDTO> FindById(int id)
         {
             var clienteEmpresarial = _context.ClientesEmpresariais.Where(c => c.Id == id)
@@ -38,29 +40,20 @@ namespace APIDesafioIntrabank.Controller
 
             if (clienteEmpresarial == null) return NotFound("Cliente empresarial não encontrado");
 
-            return clienteEmpresarial;
+            return Ok(clienteEmpresarial);
         }
 
         [HttpPost]
-        [Authorize]
-        public ActionResult<ClienteEmpresarialDTO> Insert([FromBody] ClienteEmpresarialDTO clienteEmpresarialDTO)
+        public ActionResult<ClienteEmpresarialDTO> Insert([FromBody] CreateClienteDTO createClienteDTO)
         {
-            var clienteExists = _context.ClientesEmpresariais.FirstOrDefault(c => c.Cnpj == clienteEmpresarialDTO.Cnpj);
+            var clienteExists = _context.ClientesEmpresariais.FirstOrDefault(c => c.Cnpj == createClienteDTO.Cnpj);
 
             if (clienteExists != null)
             {
                 return BadRequest("Já existe um cliente empresarial cadastrado com esse CNPJ.");
             }
 
-            var clienteEmpresarial = new ClienteEmpresarial()
-            {
-                RazaoSocial = clienteEmpresarialDTO.RazaoSocial,
-                NomeFantasia = clienteEmpresarialDTO.NomeFantasia,
-                Cnpj = clienteEmpresarialDTO.Cnpj,
-                Telefone = clienteEmpresarialDTO.Telefone,
-                Email = clienteEmpresarialDTO.Email,
-                EnderecoId = clienteEmpresarialDTO.EnderecoId
-            };
+            var clienteEmpresarial = _mapper.Map<ClienteEmpresarial>(createClienteDTO);
 
             _context.ClientesEmpresariais.Add(clienteEmpresarial);
             _context.SaveChanges();
@@ -69,7 +62,6 @@ namespace APIDesafioIntrabank.Controller
         }
 
         [HttpPut("{id}")]
-        [Authorize]
         public ActionResult Update(int id, [FromBody] ClienteEmpresarialDTO clienteEmpresarialDTO)
         {
             if (id != clienteEmpresarialDTO.Id)
@@ -110,7 +102,6 @@ namespace APIDesafioIntrabank.Controller
         }
 
         [HttpDelete("{id}")]
-        [Authorize]
         public ActionResult Delete(int id)
         {
             var ClienteEmpresarial = _context.ClientesEmpresariais.FirstOrDefault(c => c.Id == id);
