@@ -15,7 +15,7 @@ namespace APIDesafioIntrabank.Controller
     {
         private readonly APIDbContext _context;
         private readonly IMapper _mapper;
-
+        
         public ClienteEmpresarialController(APIDbContext context, IMapper mapper)
         {
             _context = context;
@@ -65,7 +65,7 @@ namespace APIDesafioIntrabank.Controller
                 return BadRequest("Esse endereço ja está cadastrado a outro cliente");
             }
 
-            _mapper.Map(createClienteDTO, clienteEmpresarial);
+            clienteEmpresarial = _mapper.Map<ClienteEmpresarial>(createClienteDTO);
 
             _context.ClientesEmpresariais.Add(clienteEmpresarial);
             _context.SaveChanges();
@@ -109,11 +109,14 @@ namespace APIDesafioIntrabank.Controller
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            var ClienteEmpresarial = _context.ClientesEmpresariais.FirstOrDefault(c => c.Id == id);
+            var clienteEmpresarial = _context.ClientesEmpresariais.FirstOrDefault(c => c.Id == id);
 
-            if (ClienteEmpresarial == null) return NotFound("Cliente não existe na base de dados");
+            if (clienteEmpresarial == null) return NotFound("Cliente não existe na base de dados");
 
-            _context.ClientesEmpresariais.Remove(ClienteEmpresarial);
+            var endereco = _context.Enderecos.FirstOrDefault(e => e.Id == clienteEmpresarial.EnderecoId);
+
+            _context.Enderecos.Remove(endereco);
+            _context.ClientesEmpresariais.Remove(clienteEmpresarial);
             _context.SaveChanges();
 
             return NoContent();
