@@ -22,7 +22,7 @@ namespace APIDesafioIntrabank.Controller
         [HttpGet]
         public IEnumerable<ReadClienteDTO> FindAll()
         {
-            var listaClientes = _context.ClientesEmpresariais.ToList();
+            var listaClientes = _context.ClientesEmpresariais.OrderBy(c => c.RazaoSocial).ToList();
             return _mapper.Map<List<ReadClienteDTO>>(listaClientes);
             
         }
