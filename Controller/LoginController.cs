@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace APIDesafioIntrabank.Controller
 {
     [ApiController]
-    [Route("v1")]
+    [Route("api/[controller]")]
     public class LoginController : ControllerBase
     {
         private readonly APIDbContext _context;
@@ -19,7 +19,6 @@ namespace APIDesafioIntrabank.Controller
         }
 
         [HttpPost]
-        [Route("login")]
         [AllowAnonymous]
         public async Task<ActionResult<dynamic>> AuthenticateAsync([FromBody] User model)
         {

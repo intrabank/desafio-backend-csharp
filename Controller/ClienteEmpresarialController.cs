@@ -20,9 +20,9 @@ namespace APIDesafioIntrabank.Controller
         }
 
         [HttpGet]
-        public IEnumerable<ReadClienteDTO> FindAll()
+        public IEnumerable<ReadClienteDTO> FindAll([FromQuery] int skip = 0, [FromQuery] int take = 5)
         {
-            var listaClientes = _context.ClientesEmpresariais.OrderBy(c => c.RazaoSocial).ToList();
+            var listaClientes = _context.ClientesEmpresariais.OrderBy(c => c.RazaoSocial).Skip(skip).Take(take).ToList();
             return _mapper.Map<List<ReadClienteDTO>>(listaClientes);
             
         }

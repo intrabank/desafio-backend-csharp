@@ -20,9 +20,9 @@ namespace APIDesafioIntrabank.Controller
         }
 
         [HttpGet]
-        public IEnumerable<ReadEnderecoDTO> FindAll()
+        public IEnumerable<ReadEnderecoDTO> FindAll([FromQuery] int skip = 0, [FromQuery] int take = 5)
         {
-            var enderecos = _context.Enderecos.ToList();
+            var enderecos = _context.Enderecos.Skip(skip).Take(take).ToList();
             return _mapper.Map<List<ReadEnderecoDTO>>(enderecos);
         }
 
