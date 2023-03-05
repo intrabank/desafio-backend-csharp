@@ -18,6 +18,13 @@ namespace APIDesafioIntrabank.Controller
             _context = context;
         }
 
+        /// <summary>
+        /// Fazer login, retornando token JWT
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <response code="200">Login efetuado com sucesso</response>
+        /// <response code="404">Usuário ou senha errados</response>
         [HttpPost]
         [AllowAnonymous]
         public async Task<ActionResult<dynamic>> AuthenticateAsync([FromBody] User model)

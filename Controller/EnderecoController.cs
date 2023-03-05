@@ -19,6 +19,11 @@ namespace APIDesafioIntrabank.Controller
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Procurar todos os endereços
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="200">Endereços retornados com sucesso</response>
         [HttpGet]
         public IEnumerable<ReadEnderecoDTO> FindAll([FromQuery] int skip = 0, [FromQuery] int take = 5)
         {
@@ -26,6 +31,13 @@ namespace APIDesafioIntrabank.Controller
             return _mapper.Map<List<ReadEnderecoDTO>>(enderecos);
         }
 
+        /// <summary>
+        /// Procurar endereço por ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <response code="200">Endereço retornado com sucesso</response>
+        /// <response code="404">Endereço não encontrado</response>
         [HttpGet("{id}")]
         public IActionResult FindById(int id)
         {
@@ -38,6 +50,12 @@ namespace APIDesafioIntrabank.Controller
             return Ok(enderecoDTO);
         }
 
+        /// <summary>
+        /// Inserir um endereço
+        /// </summary>
+        /// <param name="createEnderecoDTO"></param>
+        /// <returns></returns>
+        /// <response code="201">Endereço criado com sucesso</response>
         [HttpPost]
         public IActionResult Insert([FromBody] CreateEnderecoDTO createEnderecoDTO)
         {
@@ -49,6 +67,14 @@ namespace APIDesafioIntrabank.Controller
 
         }
 
+        /// <summary>
+        /// Atualizar um endereço
+        /// </summary>
+        /// <param name="updateEnderecoDTO"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <response code="204">Endereço atualizado com sucesso</response>
+        /// <response code="404">Endereço não existe na base</response>
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] UpdateEnderecoDTO updateEnderecoDTO)
         {
@@ -63,6 +89,14 @@ namespace APIDesafioIntrabank.Controller
             return NoContent();
         }
 
+        /// <summary>
+        /// Deletar um endereço
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <response code="204">Endereço deletado com sucesso</response>
+        /// <response code="404">Endereço não existe na base</response>
+        /// /// <response code="400">Endereço está associado a um usuário</response>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
