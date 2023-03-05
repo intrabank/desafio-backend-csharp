@@ -1,11 +1,8 @@
 ﻿using APIDesafioIntrabank.Data;
 using APIDesafioIntrabank.Dto;
 using APIDesafioIntrabank.Model;
-using APIDesafioIntrabank.Profiles;
 using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace APIDesafioIntrabank.Controller
 {
@@ -23,10 +20,10 @@ namespace APIDesafioIntrabank.Controller
         }
 
         [HttpGet]
-        public IEnumerable<ReadClienteEmpresarialDTO> FindAll()
+        public IEnumerable<ReadClienteDTO> FindAll()
         {
             var listaClientes = _context.ClientesEmpresariais.ToList();
-            return _mapper.Map<List<ReadClienteEmpresarialDTO>>(listaClientes);
+            return _mapper.Map<List<ReadClienteDTO>>(listaClientes);
             
         }
 
@@ -37,7 +34,7 @@ namespace APIDesafioIntrabank.Controller
 
             if (clienteEmpresarial == null) return NotFound("Cliente empresarial não encontrado");
 
-            var clienteDTO = _mapper.Map<ReadClienteEmpresarialDTO>(clienteEmpresarial);
+            var clienteDTO = _mapper.Map<ReadClienteDTO>(clienteEmpresarial);
 
             return Ok(clienteDTO);
         }

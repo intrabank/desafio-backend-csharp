@@ -70,6 +70,13 @@ namespace APIDesafioIntrabank.Controller
 
             if (endereco == null) return NotFound("Esse endereco não está cadastrado na base");
 
+            var cliente = _context.ClientesEmpresariais.FirstOrDefault(c => c.EnderecoId == endereco.Id);
+
+            if (cliente != null)
+            {
+                return BadRequest("Existe um cliente empresarial cadastrado com esse endereço.");
+            }
+
             _context.Enderecos.Remove(endereco);
             _context.SaveChanges();
 

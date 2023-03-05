@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIDesafioIntrabank.Migrations
 {
     [DbContext(typeof(APIDbContext))]
-    [Migration("20230303200018_Entities and Login")]
-    partial class EntitiesandLogin
+    [Migration("20230305173520_User, Cliente e Endereco")]
+    partial class UserClienteeEndereco
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

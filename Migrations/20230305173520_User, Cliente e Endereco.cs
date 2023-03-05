@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace APIDesafioIntrabank.Migrations
 {
-    public partial class EntitiesandLogin : Migration
+    public partial class UserClienteeEndereco : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

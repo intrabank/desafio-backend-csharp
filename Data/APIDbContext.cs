@@ -12,13 +12,5 @@ namespace APIDesafioIntrabank.Data
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<ClienteEmpresarial>()
-                .HasOne(c => c.Endereco)
-                .WithOne(e => e.ClienteEmpresarial)
-                .HasForeignKey<ClienteEmpresarial>(c => c.EnderecoId);
-        }
-
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace APIDesafioIntrabank.Model
 {
@@ -10,7 +11,9 @@ namespace APIDesafioIntrabank.Model
         public string Cidade { get; set; }
         public string Estado { get; set; }
         public string Pais  { get; set; }
-        public ClienteEmpresarial ClienteEmpresarial { get; set; }
+
+        [JsonIgnore]
+        public virtual ClienteEmpresarial ClienteEmpresarial { get; set; }
 
     }
 }

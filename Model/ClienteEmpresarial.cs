@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
 
 namespace APIDesafioIntrabank.Model
 {
@@ -14,8 +13,6 @@ namespace APIDesafioIntrabank.Model
         public String Telefone { get; set; }
         public String Email { get; set; }
         public int EnderecoId { get; set; }
-
-        [JsonIgnore]
-        public  Endereco Endereco { get; set; } //Navegação
+        public  virtual Endereco Endereco { get; set; } 
     }
 }

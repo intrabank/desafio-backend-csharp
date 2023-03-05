@@ -1,4 +1,3 @@
-using APIDesafioIntrabank;
 using APIDesafioIntrabank.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -12,11 +11,10 @@ builder.Services.AddControllers();
 
 //DB
 var connectionStringMysql = builder.Configuration.GetConnectionString("ConnectionMysql");
-builder.Services.AddDbContext<APIDbContext>(x => x.UseMySql(
+builder.Services.AddDbContext<APIDbContext>(x => x.UseLazyLoadingProxies().UseMySql(
         connectionStringMysql,
         ServerVersion.AutoDetect(connectionStringMysql)) 
     );
-
 
 //AUTOMAPPER
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

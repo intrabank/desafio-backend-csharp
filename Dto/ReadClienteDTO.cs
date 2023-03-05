@@ -2,7 +2,7 @@
 
 namespace APIDesafioIntrabank.Dto
 {
-    public class ReadClienteEmpresarialDTO
+    public class ReadClienteDTO
     {
         public int Id { get; set; }
         public string RazaoSocial { get; set; }
@@ -10,7 +10,6 @@ namespace APIDesafioIntrabank.Dto
         public string Cnpj { get; set; }
         public string Telefone { get; set; }
         public string Email { get; set; }
-        public int EnderecoId { get; set; }
-        public DateTime HoraConsulta { get; set; } = DateTime.Now;
+        public ReadEnderecoDTO Endereco { get; set; }
     }
 }
