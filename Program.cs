@@ -52,8 +52,8 @@ builder.Services.AddSwaggerGen(options =>
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
         Description = "Autorização JWT usando Bearer. Faço o request de login para pegar o token passando no body o json: \n" +
-        "{\"userName\": \"ricardo\", \n" +
-        "\"password\": \"ricardo\"} "
+        "{\"userName\": \"intrabank\", \n" +
+        "\"password\": \"intrabank\"} "
     });
 
     options.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -87,5 +87,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+AppDbInitializer.Seed(app);
 
 app.Run();

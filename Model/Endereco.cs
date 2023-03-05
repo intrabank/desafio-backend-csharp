@@ -6,6 +6,19 @@ namespace APIDesafioIntrabank.Model
     [Table("tb_endereco")]
     public class Endereco
     {
+        public Endereco()
+        {
+
+        }
+
+        public Endereco(string rua, string cidade, string estado, string pais)
+        {
+            Rua = rua;
+            Cidade = cidade;
+            Estado = estado;
+            Pais = pais;
+        }
+
         public int Id { get; set; }
         public string Rua { get; set; }
         public string Cidade { get; set; }

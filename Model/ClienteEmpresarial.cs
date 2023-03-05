@@ -5,6 +5,21 @@ namespace APIDesafioIntrabank.Model
     [Table("tb_cliente_empresarial")]
     public class ClienteEmpresarial
     {
+        public ClienteEmpresarial()
+        {
+
+        }
+
+        public ClienteEmpresarial(string razaoSocial, string nomeFantasia, string cnpj, string telefone, string email, int enderecoId)
+        {
+            RazaoSocial = razaoSocial;
+            NomeFantasia = nomeFantasia;
+            Cnpj = cnpj;
+            Telefone = telefone;
+            Email = email;
+            EnderecoId = enderecoId;
+        }
+
         public int Id { get; set; }
         public String RazaoSocial { get; set; }
         public String NomeFantasia { get; set; }
