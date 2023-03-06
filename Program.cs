@@ -55,7 +55,10 @@ builder.Services.AddSwaggerGen(options =>
         Scheme = "bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "Autorização JWT usando Bearer. Faço o request de login para pegar o token passando no body o json: \n" +
+        Description = "Autorização JWT usando Bearer. Você pode cadastrar um novo usuário, assim o response irá lhe entregar um token para desbloquear os endpoints," +
+        "ou você pode fazer o request de Login para pegar o token de um usuário ja " +
+        "cadastrado, você pode passar os dados do seguinte " +
+        "usuário no corpo do JSON:\n" +
         "{\"userName\": \"intrabank\", \n" +
         "\"password\": \"intrabank\"} "
     });

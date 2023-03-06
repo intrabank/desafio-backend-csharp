@@ -97,7 +97,7 @@
             <response code="404">Endereço não existe na base</response>
             /// <response code="400">Endereço está associado a um usuário</response>
         </member>
-        <member name="M:APIDesafioIntrabank.Controller.LoginController.AuthenticateAsync(APIDesafioIntrabank.Model.User)">
+        <member name="M:APIDesafioIntrabank.Controller.UserController.AuthenticateAsync(APIDesafioIntrabank.Dto.UserDTO)">
             <summary>
             Fazer login, retornando token JWT
             </summary>
@@ -105,6 +105,14 @@
             <returns></returns>
             <response code="200">Login efetuado com sucesso</response>
             <response code="404">Usuário ou senha errados</response>
+        </member>
+        <member name="M:APIDesafioIntrabank.Controller.UserController.Insert(APIDesafioIntrabank.Dto.UserDTO)">
+            <summary>
+            Cadastrar um novo usuário, retornando token JWT
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+            <response code="200">Cadastro efetuado com sucesso</response>
         </member>
     </members>
 </doc>

@@ -2,12 +2,14 @@
 using APIDesafioIntrabank.Dto;
 using APIDesafioIntrabank.Model;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APIDesafioIntrabank.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class EnderecoController : ControllerBase
     {
         private readonly APIDbContext _context;

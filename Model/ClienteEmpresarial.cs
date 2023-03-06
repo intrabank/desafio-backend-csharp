@@ -27,6 +27,7 @@ namespace APIDesafioIntrabank.Model
         public String Cnpj { get; set; }
         public String Telefone { get; set; }
         public String Email { get; set; }
+
         public int EnderecoId { get; set; }
         public  virtual Endereco Endereco { get; set; } 
     }
