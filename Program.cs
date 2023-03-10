@@ -11,11 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 //DB
-var connectionStringMysql = builder.Configuration.GetConnectionString("ConnectionMysql");
-builder.Services.AddDbContext<APIDbContext>(x => x.UseLazyLoadingProxies().UseMySql(
-        connectionStringMysql,
-        ServerVersion.AutoDetect(connectionStringMysql)) 
-    );
+var connectionStringSqlServer = builder.Configuration.GetConnectionString("ConnectionSqlServer");
+builder.Services.AddDbContext<APIDbContext>(x => x.UseLazyLoadingProxies().UseSqlServer(
+        connectionStringSqlServer));
 
 //AUTOMAPPER
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -55,12 +53,12 @@ builder.Services.AddSwaggerGen(options =>
         Scheme = "bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "Autorização JWT usando Bearer. Você pode cadastrar um novo usuário, assim o response irá lhe entregar um token para desbloquear os endpoints," +
-        "ou você pode fazer o request de Login para pegar o token de um usuário ja " +
-        "cadastrado, você pode passar os dados do seguinte " +
-        "usuário no corpo do JSON:\n" +
-        "{\"userName\": \"intrabank\", \n" +
-        "\"password\": \"intrabank\"} "
+        Description = @"Autorização JWT usando Bearer. 
+        Você pode cadastrar um novo usuário, assim o response irá lhe entregar um token para desbloquear os endpoints, 
+        ou você pode fazer o request de Login para pegar o token de um usuário ja cadastrado, 
+        você pode passar os dados do seguinte usuário no corpo do JSON: 
+        {""userName"": ""intrabank"", 
+        ""password"": ""intrabank""}"
     });
 
     options.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -94,6 +92,14 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    var context = services.GetRequiredService<APIDbContext>();
+    context.Database.Migrate();
+}
 
 AppDbInitializer.Seed(app);
 

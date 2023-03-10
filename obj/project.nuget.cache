@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eri+whL5AASlW6zTcSNfjEWYZeCimmfcQ3JeCSeJWWjQ6oz1+D8g2HrJv4kBUFk9AVwRPypVkzp210Ne0ZGmaw==",
+  "dgSpecHash": "1xv1m/9jwpUU+LINKgB/8iZujFibtFIcGacWIKEyMlVouSQkOZPl/v89YcDIJUKswptt+rbMge54HcMtmmHcxw==",
   "success": true,
-  "projectFilePath": "D:\\ws-c#\\APIDesafioIntrabank\\APIDesafioIntrabank\\APIDesafioIntrabank.csproj",
+  "projectFilePath": "C:\\Users\\Ricardo\\Desktop\\desafio-backend-csharp\\APIDesafioIntrabank.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ricardo\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\Ricardo\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
@@ -82,6 +82,7 @@
     "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.1\\microsoft.netcore.platforms.1.1.1.nupkg.sha512",
     "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
     "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.15.1\\microsoft.visualstudio.azure.containers.tools.targets.1.15.1.nupkg.sha512",
     "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.visualstudio.debugger.contracts\\17.2.0\\microsoft.visualstudio.debugger.contracts.17.2.0.nupkg.sha512",
     "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\6.0.12\\microsoft.visualstudio.web.codegeneration.6.0.12.nupkg.sha512",
     "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\6.0.12\\microsoft.visualstudio.web.codegeneration.core.6.0.12.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ws-c#\\APIDesafioIntrabank\\APIDesafioIntrabank\\APIDesafioIntrabank.csproj": {}
+    "C:\\Users\\Ricardo\\Desktop\\desafio-backend-csharp\\APIDesafioIntrabank.csproj": {}
   },
   "projects": {
-    "D:\\ws-c#\\APIDesafioIntrabank\\APIDesafioIntrabank\\APIDesafioIntrabank.csproj": {
+    "C:\\Users\\Ricardo\\Desktop\\desafio-backend-csharp\\APIDesafioIntrabank.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ws-c#\\APIDesafioIntrabank\\APIDesafioIntrabank\\APIDesafioIntrabank.csproj",
+        "projectUniqueName": "C:\\Users\\Ricardo\\Desktop\\desafio-backend-csharp\\APIDesafioIntrabank.csproj",
         "projectName": "APIDesafioIntrabank",
-        "projectPath": "D:\\ws-c#\\APIDesafioIntrabank\\APIDesafioIntrabank\\APIDesafioIntrabank.csproj",
+        "projectPath": "C:\\Users\\Ricardo\\Desktop\\desafio-backend-csharp\\APIDesafioIntrabank.csproj",
         "packagesPath": "C:\\Users\\Ricardo\\.nuget\\packages\\",
-        "outputPath": "D:\\ws-c#\\APIDesafioIntrabank\\APIDesafioIntrabank\\obj\\",
+        "outputPath": "C:\\Users\\Ricardo\\Desktop\\desafio-backend-csharp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ricardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -73,6 +73,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.14, )"
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.15.1, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",

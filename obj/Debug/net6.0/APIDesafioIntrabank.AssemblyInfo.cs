@@ -11,6 +11,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("989ca82b-ac02-42d5-ab4e-2763aeda80e4")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("APIDesafioIntrabank")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
