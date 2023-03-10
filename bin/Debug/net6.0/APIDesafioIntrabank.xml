@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>APIDesafioIntrabank</name>
+    </assembly>
+    <members>
+        <member name="M:APIDesafioIntrabank.Controller.ClienteEmpresarialController.FindAll(System.Int32,System.Int32)">
+            <summary>
+            Procurar todos os clientes
+            </summary>
+            <returns></returns>
+            <response code="200">Clientes retornados com sucesso</response>
+        </member>
+        <member name="M:APIDesafioIntrabank.Controller.ClienteEmpresarialController.FindById(System.Int32)">
+            <summary>
+            Procurar cliente por ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">Cliente retornado com sucesso</response>
+            <response code="404">Cliente não encontrado</response>
+        </member>
+        <member name="M:APIDesafioIntrabank.Controller.ClienteEmpresarialController.Insert(APIDesafioIntrabank.Dto.CreateClienteDTO)">
+            <summary>
+            Inserir um cliente
+            </summary>
+            <param name="createClienteDTO"></param>
+            <returns></returns>
+            <response code="201">Cliente criado com sucesso</response>
+            <response code="400">Ja existe cliente cadastrado com esse CNPJ</response>
+            <response code="400">Endereço não existe</response>
+            <response code="400">Endereço ja está cadastrado a outro cliente</response>
+        </member>
+        <member name="M:APIDesafioIntrabank.Controller.ClienteEmpresarialController.Update(System.Int32,APIDesafioIntrabank.Dto.UpdateClienteDTO)">
+            <summary>
+            Atualizar um cliente
+            </summary>
+            <param name="updateClienteDTO"></param>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="204">Cliente atualizado com sucesso</response>
+            <response code="404">Cliente não existe na base</response>
+            <response code="400">Ja existe cliente cadastrado com esse CNPJ</response>
+            <response code="400">Endereço não existe</response>
+            <response code="400">Endereço ja está cadastrado a outro cliente</response>
+        </member>
+        <member name="M:APIDesafioIntrabank.Controller.ClienteEmpresarialController.Delete(System.Int32)">
+            <summary>
+            Deletar um cliente
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="204">Cliente deletado com sucesso</response>
+            <response code="404">Cliente não existe na base</response>
+        </member>
+        <member name="M:APIDesafioIntrabank.Controller.EnderecoController.FindAll(System.Int32,System.Int32)">
+            <summary>
+            Procurar todos os endereços
+            </summary>
+            <returns></returns>
+            <response code="200">Endereços retornados com sucesso</response>
+        </member>
+        <member name="M:APIDesafioIntrabank.Controller.EnderecoController.FindById(System.Int32)">
+            <summary>
+            Procurar endereço por ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">Endereço retornado com sucesso</response>
+            <response code="404">Endereço não encontrado</response>
+        </member>
+        <member name="M:APIDesafioIntrabank.Controller.EnderecoController.Insert(APIDesafioIntrabank.Dto.CreateEnderecoDTO)">
+            <summary>
+            Inserir um endereço
+            </summary>
+            <param name="createEnderecoDTO"></param>
+            <returns></returns>
+            <response code="201">Endereço criado com sucesso</response>
+        </member>
+        <member name="M:APIDesafioIntrabank.Controller.EnderecoController.Update(System.Int32,APIDesafioIntrabank.Dto.UpdateEnderecoDTO)">
+            <summary>
+            Atualizar um endereço
+            </summary>
+            <param name="updateEnderecoDTO"></param>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="204">Endereço atualizado com sucesso</response>
+            <response code="404">Endereço não existe na base</response>
+        </member>
+        <member name="M:APIDesafioIntrabank.Controller.EnderecoController.Delete(System.Int32)">
+            <summary>
+            Deletar um endereço
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="204">Endereço deletado com sucesso</response>
+            <response code="404">Endereço não existe na base</response>
+            /// <response code="400">Endereço está associado a um usuário</response>
+        </member>
+        <member name="M:APIDesafioIntrabank.Controller.UserController.AuthenticateAsync(APIDesafioIntrabank.Dto.UserDTO)">
+            <summary>
+            Fazer login, retornando token JWT
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+            <response code="200">Login efetuado com sucesso</response>
+            <response code="404">Usuário ou senha errados</response>
+        </member>
+        <member name="M:APIDesafioIntrabank.Controller.UserController.Insert(APIDesafioIntrabank.Dto.UserDTO)">
+            <summary>
+            Cadastrar um novo usuário, retornando token JWT
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+            <response code="200">Cadastro efetuado com sucesso</response>
+        </member>
+    </members>
+</doc>
